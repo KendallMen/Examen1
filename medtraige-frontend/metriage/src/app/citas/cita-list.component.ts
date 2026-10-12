@@ -85,4 +85,3 @@ export class CitaListComponent implements OnInit {
     return null;
   }
 }
-
