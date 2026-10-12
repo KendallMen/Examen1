@@ -1,0 +1,118 @@
+:host {
+    display: block;
+    min-height: 100vh;
+    padding: 32px 20px;
+    color: #17324d;
+    background: #eef3f5;
+}
+
+.dashboard {
+    max-width: 1100px;
+    margin: auto;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.dashboard>p {
+    margin: 8px 0 24px;
+    color: #607387;
+}
+
+.filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 8px 12px;
+    border: 1px solid #b7d5d3;
+    border-radius: 5px;
+    color: #147d80;
+    background: white;
+    cursor: pointer;
+}
+
+button.active, button:hover:not(:disabled) {
+    color: white;
+    background: #147d80;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: .5;
+}
+
+.table-container {
+    overflow-x: auto;
+    border: 1px solid #d3e0e2;
+    border-radius: 6px;
+    background: white;
+}
+
+table {
+    width: 100%;
+    min-width: 760px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #e4edef;
+    text-align: left;
+}
+
+th {
+    color: #607387;
+    background: #f6f9f9;
+    font-size: .8rem;
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 10px;
+    background: #fff1c9;
+    font-size: .75rem;
+    font-weight: 700;
+}
+
+.status-en_atencion {
+    color: #25628a;
+    background: #dcecf7;
+}
+
+.status-atendida {
+    color: #20705e;
+    background: #ddf2e8;
+}
+
+.status-cancelada {
+    color: #a54638;
+    background: #fbe6e1;
+}
+
+.message {
+    padding: 16px;
+    background: white;
+}
+
+.error {
+    color: #a54638;
+}
+
+@media (max-width: 600px) {
+    :host {
+        padding: 24px 12px;
+    }
+
+    .filters {
+        flex-wrap: wrap;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+}

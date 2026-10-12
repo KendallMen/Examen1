@@ -1,0 +1,43 @@
+<main class="form-page">
+  <h1>Nueva cita</h1>
+  <p>Registra los datos de la atención médica.</p>
+
+  <form #form="ngForm" (ngSubmit)="guardar()">
+    <label>
+      Paciente ID
+      <input type="number" name="pacienteId" [(ngModel)]="cita.pacienteId" min="1" required>
+    </label>
+
+    <label>
+      Doctor ID
+      <input type="number" name="doctorId" [(ngModel)]="cita.doctorId" min="1" required>
+    </label>
+
+    <label>
+      Prioridad
+      <select name="nivelPrioridad" [(ngModel)]="cita.nivelPrioridad" required>
+        @for (prioridad of prioridades; track prioridad) {
+          <option [value]="prioridad">{{ prioridad }}</option>
+        }
+      </select>
+    </label>
+
+    <label>
+      Motivo de consulta
+      <textarea name="motivoConsulta" [(ngModel)]="cita.motivoConsulta" rows="4" required></textarea>
+    </label>
+
+    <label>
+      Monto de consulta
+      <input type="number" name="montoConsulta" [(ngModel)]="cita.montoConsulta" min="0" step="0.01" required>
+    </label>
+
+    @if (error) {
+      <p class="error">{{ error }}</p>
+    }
+
+    <button type="submit" [disabled]="form.invalid || enviando">
+      {{ enviando ? 'Guardando...' : 'Guardar cita' }}
+    </button>
+  </form>
+</main>

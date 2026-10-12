@@ -1,0 +1,45 @@
+<main class="dashboard">
+  <h1>Citas médicas</h1>
+  <p>{{ citas().length }} citas registradas</p>
+
+  <nav class="filters" aria-label="Filtrar por prioridad">
+    @for (filtro of filtros; track filtro) {
+      <button type="button" [class.active]="filtroPrioridad() === filtro" (click)="seleccionarPrioridad(filtro)">
+        {{ filtro }}
+      </button>
+    }
+  </nav>
+
+  @if (error()) {
+    <p class="message error">{{ error() }}</p>
+  } @else if (cargando()) {
+    <p class="message">Cargando citas...</p>
+  } @else if (!citasFiltradas().length) {
+    <p class="message">No hay citas para este filtro</p>
+  } @else {
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Código</th><th>Paciente</th><th>Doctor</th><th>Prioridad</th><th>Estado</th><th>Fecha</th><th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (cita of citasFiltradas(); track cita.id) {
+            <tr>
+              <td>{{ cita.codigoCita }}</td>
+              <td>{{ cita.nombrePaciente }}</td>
+              <td>{{ cita.nombreDoctor }}</td>
+              <td><span class="badge">{{ cita.nivelPrioridad }}</span></td>
+              <td><span class="badge status-{{ cita.estado.toLowerCase() }}">{{ etiquetaEstado(cita.estado) }}</span></td>
+              <td>{{ cita.fechaCita | date:'dd/MM/yyyy HH:mm' }}</td>
+              <td>
+                <button type="button" [disabled]="!puedeAvanzar(cita.estado)" (click)="avanzarEstado(cita)">Avanzar</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</main>

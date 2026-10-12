@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -13,32 +13,26 @@ import {
 export class CitaService {
 
   private readonly http = inject(HttpClient);
-  private readonly requestOptions = {
-    headers: new HttpHeaders({
-      Authorization: `Basic ${btoa('user:examen1')}`
-    })
-  };
 
   getCitas(): Observable<CitaMedica[]> {
-    return this.http.get<CitaMedica[]>(`${environment.API_URL}citas`, this.requestOptions);
+    return this.http.get<CitaMedica[]>(`${environment.API_URL}citas`);
   }
 
   getCitasPorPrioridad(prioridad: NivelPrioridad): Observable<CitaMedica[]> {
     return this.http.get<CitaMedica[]>(
-      `${environment.API_URL}citas/prioridad/${prioridad}`,
-      this.requestOptions
+      `${environment.API_URL}citas/prioridad/${prioridad}`
     );
   }
 
   crearCita(payload: CrearCitaPayload): Observable<CitaMedica> {
-    return this.http.post<CitaMedica>(`${environment.API_URL}citas`, payload, this.requestOptions);
+    return this.http.post<CitaMedica>(`${environment.API_URL}citas`, payload);
   }
 
   actualizarEstado(id: number, estado: string): Observable<CitaMedica> {
     return this.http.patch<CitaMedica>(
       `${environment.API_URL}citas/${id}/estado`,
       null,
-      { ...this.requestOptions, params: { nuevoEstado: estado } }
+      { params: { nuevoEstado: estado } }
     );
   }
 
