@@ -1,4 +1,4 @@
-package main.java.com.medtriage.model;
+package com.medtriage.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,7 +24,7 @@ public class Doctor {
 	@Column(nullable = false)
 	private boolean disponible;
 
-	protected Doctor() {
+	public Doctor() {
 	}
 
 	public Long getId() {

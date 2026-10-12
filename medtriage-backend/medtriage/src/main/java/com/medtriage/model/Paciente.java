@@ -1,4 +1,4 @@
-package main.java.com.medtriage.model;
+package com.medtriage.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,7 +27,7 @@ public class Paciente {
 	@Column(nullable = false, length = 20)
 	private String telefono;
 
-	protected Paciente() {
+	public Paciente() {
 	}
 
 	public Long getId() {

@@ -1,4 +1,4 @@
-package main.java.com.medtriage.dto;
+package com.medtriage.dto;
 
 import java.math.BigDecimal;
 

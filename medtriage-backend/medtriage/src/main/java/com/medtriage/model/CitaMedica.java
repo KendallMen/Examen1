@@ -1,4 +1,4 @@
-package main.java.com.medtriage.model;
+package com.medtriage.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -46,7 +46,7 @@ public class CitaMedica {
 	@Column(name = "fecha_cita", nullable = false)
 	private LocalDateTime fechaCita;
 
-	protected CitaMedica() {
+	public CitaMedica() {
 	}
 
 	public Long getId() {
